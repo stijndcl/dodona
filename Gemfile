@@ -150,3 +150,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # interfacing with docker
 gem 'docker-api'
+
+
+gem "statsd-instrument"

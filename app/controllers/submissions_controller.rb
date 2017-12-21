@@ -22,6 +22,7 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new(para)
     can_submit = Pundit.policy!(current_user, @submission.exercise).submit?
     if can_submit && @submission.save
+      StatsD.increment('submissions')
       render json: { status: 'ok', id: @submission.id }
     else
       @submission.errors.add(:exercise, :not_permitted) unless can_submit
