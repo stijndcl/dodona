@@ -9,3 +9,6 @@ ActiveSupport::Notifications.subscribe /process_action.action_controller/ do |na
     StatsD.measure(key+"view_runtime", payload[:view_runtime]  || 0, sample_rate: 0.1)
     StatsD.measure(key+"total_runtime", 1000.0 * (ending - start), sample_rate: 0.1) # time in ms
   end
+
+Submission.extend StatsD::Instrument
+Submission.statsd_count :evaluate_delayed, 'submission.queued'

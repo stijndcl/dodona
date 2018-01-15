@@ -85,9 +85,6 @@ class Submission < ApplicationRecord
       result: '',
       summary: nil
     )
-
-    StatsD.increment("submission.queued")
-    StatsD.set("submission.exersise",self.exercise_id.to_s)
     delay(priority: p_value).evaluate
   end
 
@@ -101,8 +98,6 @@ class Submission < ApplicationRecord
     self.status = Submission.normalize_status result_hash[:status]
     self.accepted = result_hash[:accepted]
     self.summary = result_hash[:description]
-    StatsD.increment("submission.handled")
-    StatsD.increment("submission.status."+self.status.to_s)
     save
   end
 
