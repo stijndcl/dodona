@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
+
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   root 'pages#home'
 

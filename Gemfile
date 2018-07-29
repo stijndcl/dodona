@@ -110,6 +110,9 @@ gem 'rails_server_timings'
 # Maybe in Ruby
 gem 'possibly'
 
+# swagger API description & testing
+gem 'rswag'
+
 group :development, :test do
   # Use mocha for stubbing and mocking
   gem 'mocha'
@@ -132,6 +135,9 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
+  # Required by rswag
+  gem 'rspec-rails'
 end
 
 group :test do
