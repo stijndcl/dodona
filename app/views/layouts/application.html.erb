@@ -96,7 +96,7 @@
   <% if user_signed_in? %>
     <%= render 'layouts/drawer' %>
   <% end %>
-  <div id="main-container" class="container main">
+  <div id="main-container" class="container main print-full-width">
     <div class="page-messages hidden-print">
       <% flash.each do |key, value| %>
         <% unless value.nil? %>
