@@ -318,8 +318,8 @@
 .strp-spinner-move.strp-side-top .strp-spinner { position: absolute; bottom: 0; right: 0; margin-bottom: -48px; }
 
 
-$-moz-keyframes strp-spinner-spin { 100% { -moz-transform: rotate(360deg); } }
-$-webkit-keyframes strp-spinner-spin { 100% { -webkit-transform: rotate(360deg); } }
+@-moz-keyframes strp-spinner-spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes strp-spinner-spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes strp-spinner-spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 .strp-spinner-rotate,
