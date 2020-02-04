@@ -115,7 +115,6 @@ GEM
       json
       simplecov
       url
-    commonjs (0.2.7)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
     css_parser (1.7.0)
@@ -192,15 +191,8 @@ GEM
       kramdown (~> 2.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    less (2.6.0)
-      commonjs (~> 0.2.7)
-    less-rails (4.0.0)
-      actionpack (>= 4)
-      less (~> 2.6.0)
-      sprockets (>= 2)
     letter_opener (1.7.0)
       launchy (~> 2.2)
-    libv8 (3.16.14.19)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -326,7 +318,6 @@ GEM
     rb-readline (0.5.5)
     recaptcha (5.3.0)
       json
-    ref (2.0.0)
     regexp_parser (1.6.0)
     responders (3.0.0)
       actionpack (>= 5.0)
@@ -349,6 +340,16 @@ GEM
       ffi (~> 1.9)
     ruby2_keywords (0.0.1)
     rubyzip (2.2.0)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
+    sassc (2.2.1)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -376,9 +377,6 @@ GEM
     sshkit (1.20.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    therubyracer (0.12.3)
-      libv8 (~> 3.16.14.15)
-      ref
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -448,7 +446,6 @@ DEPENDENCIES
   jwt (~> 2.2.1)
   kramdown (~> 2.1.0)
   kramdown-parser-gfm (~> 1.1.0)
-  less-rails (~> 4.0)
   letter_opener (~> 1.7.0)
   listen (~> 3.2.1)
   mail_form (~> 1.8.0)
@@ -473,6 +470,7 @@ DEPENDENCIES
   rouge (= 3.15.0)
   rubocop-rails (~> 2.4.2)
   rubyzip (~> 2.2.0)
+  sass-rails
   selenium-webdriver (~> 3.142.7)
   simplecov (~> 0.18.1)
   sinatra (~> 2.0.8)
@@ -480,7 +478,6 @@ DEPENDENCIES
   spring (~> 2.1.0)
   spring-watcher-listen (~> 2.0.1)
   sprockets (< 4.0)
-  therubyracer
   tzinfo-data
   uglifier (>= 4.1.20)
   web-console (~> 4.0.1)
