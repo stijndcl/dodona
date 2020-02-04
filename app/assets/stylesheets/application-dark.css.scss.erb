@@ -2,14 +2,23 @@
 //= depend_on theme/development.css.scss
 //= depend_on theme/production.css.scss
 
+
+
+@import "theme/colors.css.scss";
+@import "mixins.css.scss";
+@import "vendor.scss";
+
+
+@import "theme/theme-dark.css.scss";
+
 <% if Rails.env.development? || Rails.env.test? || Rails.env.staging? %>
 $mode: "development";
+@import "theme/development.css.scss";
 <% else %>
 $mode: "production";
+@import "theme/production.css.scss";
 <% end %>
 
-// temporarily use production mode in development
-$mode: "production";
+@import "theme/rouge-dark.css.scss";
 
-$theme: "dark";
 @import "base.css.scss";

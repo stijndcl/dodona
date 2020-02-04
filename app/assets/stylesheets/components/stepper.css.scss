@@ -1,43 +1,43 @@
 .stepper {
   .panel {
-    @mixin shadow-z0(),
-    border-radius: 0,
-    background-color: transparent,
+    @include shadow-z0();
+    border-radius: 0;
+    background-color: transparent;
 
     .panel-heading {
-      background: transparent,
-      border: none,
+      background: transparent;
+      border: none;
 
       .step-circle {
-        display: inline-block,
-        width: 16px,
-        height: 16px,
-        line-height: 16px,
-        padding: 3px,
-        border-radius: 50%,
-        text-align: center,
-        box-sizing: initial,
-        font-size: 12px,
-        margin-right: 5px,
-        vertical-align: text-bottom,
-        background-color: $navbar-default-bg,
-        color: $navbar-default-color,
-        letter-spacing: 0,
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        padding: 3px;
+        border-radius: 50%;
+        text-align: center;
+        box-sizing: initial;
+        font-size: 12px;
+        margin-right: 5px;
+        vertical-align: text-bottom;
+        background-color: $navbar-default-bg;
+        color: $navbar-default-color;
+        letter-spacing: 0;
       }
 
       h4.panel-title {
-        line-height: 24px,
+        line-height: 24px;
 
         .answer {
-          color: $text-muted,
+          color: $text-muted;
         }
       }
     }
 
 
     .panel-heading + .panel-collapse > .panel-body {
-      .shadow-z2(),
-      background-color: $content-bg,
+      @include shadow-z2();
+      background-color: $content-bg;
 
       @media (min-width: $screen-sm-min) {
         margin-left: 45px;
