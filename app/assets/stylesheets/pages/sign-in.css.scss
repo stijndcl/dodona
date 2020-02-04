@@ -1,0 +1,50 @@
+.sign-in-wrapper a {
+  border-radius: 2px;
+  display: block;
+}
+
+// sign in page
+.sign-in-dialog-wrapper {
+  margin: auto;
+  // 1 column
+  @media (max-width: 768px) {
+    width: 350px;
+  }
+  // 2 columns
+  @media (min-width: 768px) and (max-width: 1200px) {
+    width: 750px;
+  }
+  // 3 columns
+  @media (min-width: 1200px) {
+    width: 1150px;
+  }
+}
+
+.sign-in-dialog-wrapper h1 {
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.sign-in-dialog-wrapper h1 small {
+  line-height: 2;
+  font-size: 50%;
+}
+
+.sign-in-dialog-header {
+  padding: 15px;
+}
+
+a.institution-sign-in {
+  color: $text-color;
+}
+
+a.institution-sign-in:link,
+a.institution-sign-in:visited,
+a.institution-sign-in:hover,
+a.institution-sign-in:active {
+  text-decoration: none;
+}
+
+.sign-in-divider .divider {
+  margin-top: 45px;
+}
