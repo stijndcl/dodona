@@ -205,12 +205,12 @@
     margin-right: 1em;
   }
   .message-zeus, .message-staff {
-    border-left: 3px solid @text-secondary;
+    border-left: 3px solid $text-secondary;
     padding-left: 25px
   }
   .message-zeus:before, .message-staff:before {
     font: normal normal normal 24px/1 "Material Design Icons";
-    color: @text-secondary;
+    color: $text-secondary;
     font-size: 18px;
     position: absolute;
     left: 22px;
