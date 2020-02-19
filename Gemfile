@@ -11,7 +11,7 @@ gem 'mysql2', '~> 0.5.3'
 gem 'puma', '~> 4.3.1'
 
 # Use sass for stylesheets (depends on sprockets)
-gem 'sass-rails'
+gem 'sassc-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 4.1.20'

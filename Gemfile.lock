@@ -340,8 +340,6 @@ GEM
       ffi (~> 1.9)
     ruby2_keywords (0.0.1)
     rubyzip (2.2.0)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.2.1)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -470,7 +468,7 @@ DEPENDENCIES
   rouge (= 3.15.0)
   rubocop-rails (~> 2.4.2)
   rubyzip (~> 2.2.0)
-  sass-rails
+  sassc-rails
   selenium-webdriver (~> 3.142.7)
   simplecov (~> 0.18.1)
   sinatra (~> 2.0.8)
