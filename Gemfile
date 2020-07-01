@@ -71,6 +71,7 @@ gem 'ruby-saml', '~> 1.11.0'
 # omniauth
 gem 'omniauth-google-oauth2', '~> 0.8.0'
 gem 'omniauth-oauth2', '~> 1.6.0'
+gem 'omniauth_openid_connect', '~> 0.3.5'
 
 gem 'jwt', '~> 2.2.1'
 
@@ -190,5 +191,3 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # interfacing with docker
 gem 'docker-api', '~> 1.34.2'
-
-gem "omniauth_openid_connect", "~> 0.3.5"
