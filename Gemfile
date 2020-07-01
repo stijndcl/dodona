@@ -190,3 +190,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # interfacing with docker
 gem 'docker-api', '~> 1.34.2'
+
+gem "omniauth_openid_connect", "~> 0.3.5"
