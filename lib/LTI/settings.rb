@@ -10,6 +10,9 @@ module OmniAuth
           # from this method to the for_provider method below, to make them
           # provider-specific.
           {
+              client_options: {
+                  redirect_uri: "https://#{Rails.configuration.default_host}/users/auth/lti/callback"
+              },
               discovery: false,
               prompt: :none,
               response_mode: :form_post,
@@ -25,8 +28,7 @@ module OmniAuth
               client_options: {
                   authorization_endpoint: provider.authorization_uri,
                   jwks_uri: provider.jwks_uri,
-                  identifier: provider.client_id,
-                  redirect_uri: "https://#{Rails.configuration.default_host}/users/auth/lti/callback?provider=#{provider.id}"
+                  identifier: provider.client_id
               },
               issuer: provider.issuer
           }
