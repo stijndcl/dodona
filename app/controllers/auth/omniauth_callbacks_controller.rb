@@ -50,7 +50,7 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def try_login!
     # Ensure the preferred provider is used.
-    # TODO add link providers.
+    # TODO add coupling between providers.
     return redirect_to_preferred_provider! unless provider.prefer?
 
     # Find the identity.
@@ -69,7 +69,8 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     return redirect_with_errors!(user) if user.errors.any?
 
     # User successfully updated, finish the authentication procedure.
-    sign_in_and_redirect user, event: :authentication
+    sign_in user, event: :authentication
+    redirect_to_target!(user)
   end
 
   # ==> Utilities.
@@ -140,6 +141,10 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     redirect_to root_path
   end
 
+  def redirect_to_target!(user)
+    redirect_to(auth_hash.extra[:target] || after_sign_in_path_for(user))
+  end
+
   # ==> Shorthands.
 
   def auth_hash
@@ -154,6 +159,10 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     return nil if auth_hash.blank?
 
     auth_hash.provider.to_sym
+  end
+
+  def auth_target
+
   end
 
   def auth_uid
