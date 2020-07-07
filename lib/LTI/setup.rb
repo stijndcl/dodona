@@ -27,7 +27,9 @@ module OmniAuth
 
           provider_settings = OmniAuth::Strategies::LTI::Settings.for_provider(_provider)
           provider_settings.merge({
-                                      lti_message_hint: params[:lti_message_hint]
+                                      extra_authorize_params: {
+                                          lti_message_hint: params[:lti_message_hint]
+                                      }
                                   })
         end
 

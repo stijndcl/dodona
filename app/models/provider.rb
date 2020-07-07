@@ -80,7 +80,6 @@ class Provider < ApplicationRecord
     return if preferred_provider.id == id
 
     # Invalid.
-    p mode
     errors.add(:mode, 'may not be preferred')
   end
 end
