@@ -49,13 +49,14 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def try_login!
-    # Ensure the preferred provider is used.
-    # TODO add coupling between providers.
-    return redirect_to_preferred_provider! unless provider.prefer?
+    # If the provider is a redirect provider, forward the user to the preferred provider.
+    return redirect_to_preferred_provider! if provider.redirect?
 
     # Find the identity.
     identity, user = find_identity_and_user
     if identity.blank?
+      # TODO: If provider.link? then attempt to link the new identity to an existing user.
+      #       Now, this will simply create a new user.
       # Create a new user and identity.
       user = User.new institution: provider&.institution if user.blank?
       identity = user.identities.build identifier: auth_uid, provider: provider

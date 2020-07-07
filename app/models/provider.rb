@@ -20,7 +20,7 @@
 #  jwks_uri          :string(255)
 #
 class Provider < ApplicationRecord
-  enum mode: { prefer: 0, redirect: 1 }
+  enum mode: { prefer: 0, redirect: 1, link: 2 }
 
   PROVIDERS = [Provider::GSuite, Provider::Lti, Provider::Office365, Provider::Saml, Provider::Smartschool].freeze
 
@@ -80,6 +80,7 @@ class Provider < ApplicationRecord
     return if preferred_provider.id == id
 
     # Invalid.
+    p mode
     errors.add(:mode, 'may not be preferred')
   end
 end
