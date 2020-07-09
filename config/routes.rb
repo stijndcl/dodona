@@ -210,6 +210,10 @@ Rails.application.routes.draw do
       get 'punchcard', to: 'statistics#punchcard'
     end
 
+    scope 'lti', controller: 'lti' do
+      get 'content', to: 'lti#content'
+    end
+
   end
 
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
