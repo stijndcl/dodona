@@ -34,7 +34,7 @@ module OmniAuth
         end
 
         def failure!
-          raise "Invalid provider."
+          raise "Invalid or unknown LTI provider."
         end
 
         def params
