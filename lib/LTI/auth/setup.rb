@@ -1,8 +1,8 @@
 require_relative 'settings.rb'
 
-module OmniAuth
-  module Strategies
-    class LTI
+module LTI
+  module Auth
+    module OmniAuth
       class Setup
         def self.call(env)
           new(env).setup

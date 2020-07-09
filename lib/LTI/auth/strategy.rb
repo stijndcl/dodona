@@ -34,8 +34,9 @@ module OmniAuth
         # Parse the claims.
         claims = raw_info
                      .select { |k, _| k.match(/claim/) }
-                     .map { |k, v| [k.delete_prefix(CLAIM_PREFIX).to_sym, v] }
+                     .map { |k, v| [k.delete_prefix(CLAIM_PREFIX), v] }
                      .to_h
+                     .deep_symbolize_keys
 
         # Configure the info hashes.
         env['omniauth.auth'] = AuthHash.new(

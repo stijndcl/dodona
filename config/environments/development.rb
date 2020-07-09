@@ -7,14 +7,14 @@ Rails.application.configure do
   # Appilcation hosts
 
   # The main webapp
-  config.default_host = 'dodona.localhost'
+  config.default_host = 'ab393072f3b1.ngrok.io'
 
   # The sandboxed host with user provided content, without authentication
   config.sandbox_host = 'sandbox.localhost'
 
   # Where we host our assets (a single domain, for caching)
   # Port is needed somehow...
-  config.action_controller.asset_host = 'dodona.localhost:3000'
+  config.action_controller.asset_host = 'ab393072f3b1.ngrok.io'
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -93,7 +93,7 @@ Rails.application.configure do
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.middleware.use ExceptionNotification::Rack,
-                        ignore_if: ->(env, _exception) { env['HTTP_HOST'] == 'localhost:3000' || env['HTTP_HOST'] == 'dodona.localhost:3000' },
+                        ignore_if: ->(env, _exception) { env['HTTP_HOST'] == 'localhost:3000' || env['HTTP_HOST'] == 'ab393072f3b1.ngrok.io' },
                         email: {
                           email_prefix: '[Dodona-dev] ',
                           sender_address: %("Dodona" <dodona@ugent.be>),
