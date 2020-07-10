@@ -211,7 +211,7 @@ Rails.application.routes.draw do
     end
 
     scope 'lti', controller: 'lti' do
-      get 'content', to: 'lti#content'
+      get 'content_selection', to: 'lti#content_selection'
     end
 
   end

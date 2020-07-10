@@ -29,14 +29,8 @@ module OmniAuth
 
       def id_token_callback_phase
         # Parse the JWT to obtain the raw response.
-        raw_info = decode_id_token(params['id_token']).raw_attributes
-
-        # Parse the claims.
-        claims = raw_info
-                     .select { |k, _| k.match(/claim/) }
-                     .map { |k, v| [k.delete_prefix(CLAIM_PREFIX), v] }
-                     .to_h
-                     .deep_symbolize_keys
+        jwt_token = params.symbolize_keys[:id_token]
+        raw_info = decode_id_token(jwt_token).raw_attributes
 
         # Configure the info hashes.
         env['omniauth.auth'] = AuthHash.new(
@@ -50,12 +44,12 @@ module OmniAuth
             },
             extra: {
                 provider: Provider::Lti.find_by(issuer: raw_info[:iss]),
-                target: claims[:target_link_uri]
+                redirect_params: {
+                    id_token: jwt_token
+                },
+                target: raw_info['https://purl.imsglobal.org/spec/lti/claim/target_link_uri']
             }
         )
-
-        # Store the claims in the session.
-        session['lti.claims'] = claims
 
         call_app!
       end

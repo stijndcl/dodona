@@ -6,8 +6,8 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def failure
     flash_failure request.params['error_message'] \
-                                                    || request.params['error_description'] \
-                                                    || I18n.t('devise.omniauth_callbacks.unknown_failure')
+                                                      || request.params['error_description'] \
+                                                      || I18n.t('devise.omniauth_callbacks.unknown_failure')
     redirect_to root_path, status: :bad_request
   end
 
@@ -145,7 +145,7 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def redirect_to_target!(user)
-    redirect_to(auth_hash.extra[:target] || after_sign_in_path_for(user))
+    redirect_to(auth_target || after_sign_in_path_for(user), params: auth_redirect_params)
   end
 
   # ==> Shorthands.
@@ -164,7 +164,12 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     auth_hash.provider.to_sym
   end
 
-  def auth_target;
+  def auth_redirect_params
+    auth_hash.extra[:redirect_params] || {}
+  end
+
+  def auth_target
+    auth_hash.extra[:target]
   end
 
   def auth_uid

@@ -1,6 +1,6 @@
 ## LTI.
-require_relative '../../lib/LTI/strategy.rb'
-require_relative '../../lib/LTI/setup.rb'
+require_relative '../../lib/LTI/auth/strategy.rb'
+require_relative '../../lib/LTI/auth/setup.rb'
 
 ## SAML.
 require_relative '../../lib/SAML/strategy.rb'
@@ -256,7 +256,7 @@ Devise.setup do |config|
                   Rails.application.credentials.google_client_id,
                   Rails.application.credentials.google_client_secret
 
-  config.omniauth :lti, setup: OmniAuth::Strategies::LTI::Setup
+  config.omniauth :lti, setup: LTI::Auth::OmniAuth::Setup
 
   config.omniauth :office365,
                   Rails.application.credentials.office365_client_id,

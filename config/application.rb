@@ -22,14 +22,14 @@ module Dodona
     # Appilcation hosts
 
     # The main webapp
-    config.default_host = 'ab393072f3b1.ngrok.io'
+    config.default_host = '2ac51bc3b0ae.ngrok.io'
 
     # The sandboxed host with user provided content, without authentication
     config.sandbox_host = 'sandbox.localhost'
 
     # Where we host our assets (a single domain, for caching)
     # Port is needed somehow...
-    config.action_controller.asset_host = 'ab393072f3b1.ngrok.io'
+    config.action_controller.asset_host = '2ac51bc3b0ae.ngrok.io'
 
     config.time_zone = 'Brussels'
 
@@ -47,6 +47,6 @@ module Dodona
 
     config.action_view.default_form_builder = "StandardFormBuilder"
 
-    config.hosts << 'ab393072f3b1.ngrok.io'
+    config.hosts << '2ac51bc3b0ae.ngrok.io'
   end
 end
