@@ -1,9 +1,16 @@
 module LTI
   module Messages
-    class DeepLinkingRequest < LTI::Messages::Message
-      def initialize(token_body)
-        settings = token_body[::LTI::Messages::Claims::DEEP_LINKING_SETTINGS]
-        
+    module Types
+      class DeepLinkingRequest
+        include LTI::Messages::Message
+
+        require_parameter :accept_presentation_document_targets
+        require_parameter :accept_types
+        require_parameter :deep_link_return_url
+
+        def initialize(token_body)
+          p required_parameters
+        end
       end
     end
   end
