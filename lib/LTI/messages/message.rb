@@ -1,5 +1,3 @@
-require_relative '../jwk.rb'
-
 module LTI
   module Messages
     class Message

@@ -1,4 +1,4 @@
-require_relative '../../lib/LTI/messages/message.rb'
+require_relative '../../lib/LTI/messages.rb'
 
 class LtiController < ApplicationController
   before_action :set_lti_message
@@ -17,6 +17,6 @@ class LtiController < ApplicationController
   private
 
   def set_lti_message
-    @lti_request = LTI::Messages::Message.parse_id_token(params[:id_token], params[:issuer])
+    @lti_request = ::LTI::Messages.parse_id_token(params[:id_token], params[:issuer])
   end
 end
