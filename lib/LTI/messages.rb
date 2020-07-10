@@ -1,5 +1,11 @@
 module LTI
   module Messages
+    extend LTI::JWK
+
+    require_relative 'messages/claims.rb'
+    require_relative 'messages/message.rb'
+    require_relative 'messages/types.rb'
+
     def self.parse_id_token(token, issuer)
       # Get the JWKS uri for the given issuer.
       jwks_uri = Provider::Lti.find_by(issuer: issuer)&.jwks_uri
