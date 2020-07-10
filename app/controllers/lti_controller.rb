@@ -15,6 +15,6 @@ class LtiController < ApplicationController
 
   # TODO this token should be parsed into a message object of some sort.
   def set_lti_request
-    @lti_request = request.session['lti.request'].deep_symbolize_keys
+    @lti_request = params[:id_token]
   end
 end

@@ -1,21 +1,16 @@
+require_relative '../jwk.rb'
 require 'openid_connect'
 
 # This strategy augments the existing oidc strategy for Dodona.
 module OmniAuth
   module Strategies
     class LTI < OmniAuth::Strategies::OpenIDConnect
-      include LtiHelper
+      include ::LTI::JWK
 
       option :name, 'lti'
 
       def key_or_secret
-        # Download the jwks keyset from the provider.
-        @jwks ||= JSON.parse(
-            HTTPClient.new.get_content(options.client_options.jwks_uri)
-        ).with_indifferent_access
-
-        # Parse the keys
-        JSON::JWK::Set.new @jwks[:keys]
+        parse_jwks_uri(options.client_options.jwks_uri)
       end
 
       def callback_phase
@@ -45,7 +40,8 @@ module OmniAuth
             extra: {
                 provider: Provider::Lti.find_by(issuer: raw_info[:iss]),
                 redirect_params: {
-                    id_token: jwt_token
+                    id_token: jwt_token,
+                    issuer: raw_info[:iss]
                 },
                 target: raw_info['https://purl.imsglobal.org/spec/lti/claim/target_link_uri']
             }

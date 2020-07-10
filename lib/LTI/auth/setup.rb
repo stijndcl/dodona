@@ -1,9 +1,11 @@
-require_relative '../settings.rb'
+require_relative 'settings.rb'
 
 module LTI
   module Auth
     module OmniAuth
       class Setup
+        include LTI::Auth::Settings
+
         def self.call(env)
           new(env).setup
         end
@@ -14,7 +16,7 @@ module LTI
 
         def setup
           @env['omniauth.params'] ||= {}
-          @env['omniauth.strategy'].options.merge!(LTI::Settings.base)
+          @env['omniauth.strategy'].options.merge!(base_settings)
           @env['omniauth.strategy'].options.merge!(configure)
         end
 
@@ -25,8 +27,8 @@ module LTI
           _provider = provider
           return failure! if _provider.blank?
 
-          provider_settings = LTI::Settings.for_provider(_provider)
-          provider_settings.merge({
+          _provider_settings = provider_settings(_provider)
+          _provider_settings.merge({
                                       extra_authorize_params: {
                                           lti_message_hint: params[:lti_message_hint]
                                       }

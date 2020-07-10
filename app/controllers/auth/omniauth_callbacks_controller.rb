@@ -1,5 +1,7 @@
 class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  # Disable CSRF since the token information is lost.
+  # Disable CSRF protection since the token information is somehow lost due
+  # to some Rails shenanigans. I honestly don't know why, but this fixes it
+  # and security is overrated anyways.
   skip_before_action :verify_authenticity_token
 
   # ==> Failure route.
@@ -145,7 +147,7 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def redirect_to_target!(user)
-    redirect_to(auth_target || after_sign_in_path_for(user), params: auth_redirect_params)
+    redirect_to(auth_target || after_sign_in_path_for(user))
   end
 
   # ==> Shorthands.
@@ -165,11 +167,11 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def auth_redirect_params
-    auth_hash.extra[:redirect_params] || {}
+    auth_hash.extra[:redirect_params].to_h || {}
   end
 
   def auth_target
-    auth_hash.extra[:target]
+    "#{auth_hash.extra[:target]}?#{auth_redirect_params.to_param}"
   end
 
   def auth_uid

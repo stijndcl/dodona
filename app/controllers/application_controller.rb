@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   before_action :store_current_location,
                 except: %i[media sign_in institution_not_supported],
-                unless: -> { devise_controller? || remote_request? }
+                unless: -> { devise_controller? || remote_request? || lti_request? }
 
   before_action :skip_session,
                 if: :sandbox?
@@ -68,6 +68,10 @@ class ApplicationController < ActionController::Base
 
   def default_url
     "#{request.protocol}#{Rails.configuration.default_host}:#{request.port}"
+  end
+
+  def lti_request?
+    params[:controller] == 'lti'
   end
 
   def remote_request?
