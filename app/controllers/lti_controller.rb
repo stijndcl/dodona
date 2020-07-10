@@ -1,5 +1,7 @@
+require_relative '../../lib/LTI/messages/message.rb'
+
 class LtiController < ApplicationController
-  before_action :set_lti_request
+  before_action :set_lti_message
 
   # Allow the content endpoint to be embedded in modals.
   content_security_policy only: %i[content_selection] do |policy|
@@ -7,14 +9,14 @@ class LtiController < ApplicationController
   end
 
   def content_selection
+    # Parse the DeepLinking settings from the request.
     @courses = Course.all
     render :content
   end
 
   private
 
-  # TODO this token should be parsed into a message object of some sort.
-  def set_lti_request
-    @lti_request = params[:id_token]
+  def set_lti_message
+    @lti_request = LTI::Messages::Message.parse_id_token(params[:id_token], params[:issuer])
   end
 end

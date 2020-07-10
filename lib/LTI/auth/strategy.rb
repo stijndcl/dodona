@@ -1,4 +1,5 @@
 require_relative '../jwk.rb'
+require_relative '../messages/claims.rb'
 require 'openid_connect'
 
 # This strategy augments the existing oidc strategy for Dodona.
@@ -43,7 +44,7 @@ module OmniAuth
                     id_token: jwt_token,
                     issuer: raw_info[:iss]
                 },
-                target: raw_info['https://purl.imsglobal.org/spec/lti/claim/target_link_uri']
+                target: raw_info[::LTI::Messages::Claims::TARGET_LINK_URI]
             }
         )
 
